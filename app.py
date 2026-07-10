@@ -220,6 +220,20 @@ def profile():
 def settings():
     return render_template("settings.html")
 
+# ---------------- DASHBOARD V2 ----------------
+@app.route("/dashboard-v2")
+def dashboard_v2():
+
+    if "user_id" not in session:
+        return redirect(url_for("login"))
+
+    user = User.query.get(session["user_id"])
+
+    return render_template(
+        "dashboard_v2.html",
+        user=user
+    )
+
 
 # ---------------- LOGOUT ----------------
 @app.route("/logout")
