@@ -3,44 +3,53 @@
 
 <head>
 
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
 
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
-<title>Dashboard</title>
+    <title>Dashboard | Vaishnavi Gramin Bank</title>
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap -->
 
-<link rel="stylesheet"
-href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+          rel="stylesheet">
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-rel="stylesheet">
+    <!-- Bootstrap Icons -->
 
-<link rel="stylesheet"
-href="{{ url_for('static', filename='css/common.css') }}">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
-<link rel="stylesheet"
-href="{{ url_for('static', filename='css/sidebar.css') }}">
+    <!-- Google Font -->
 
-<link rel="stylesheet"
-href="{{ url_for('static', filename='css/navbar.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
 
-<link rel="stylesheet"
-href="{{ url_for('static', filename='css/dashboard.css') }}">
+    <!-- Dashboard CSS -->
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/dashboard.css') }}">
 
 </head>
 
 <body>
 
-{% include 'components/sidebar.html' %}
+<div class="dashboard">
 
-<div class="main-content">
+    {% include 'components/sidebar.html' %}
 
-    {% include 'components/navbar.html' %}
+    <div class="main-content">
+
+        {% include 'components/navbar.html' %}
+        {% include 'components/cards.html' %}
+        {% include 'components/quick_actions.html' %}
+        {% include 'components/transactions.html' %}
+        
+
+    </div>
 
 </div>
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
 
 </body>
 

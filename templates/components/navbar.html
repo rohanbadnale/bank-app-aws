@@ -1,5 +1,49 @@
-<nav class="navbar">
+<nav class="top-navbar">
 
-    Navbar Coming Soon 🚀
+    <div class="welcome">
+
+        <h2>Welcome Back, {{ user.fullname }} 👋</h2>
+
+        <p>Manage your banking securely</p>
+
+    </div>
+
+    <div class="nav-right">
+
+        <!-- Search -->
+        <div class="search-box">
+
+            <i class="bi bi-search"></i>
+
+            <input
+                type="text"
+                placeholder="Search...">
+
+        </div>
+
+        <!-- Notification -->
+        <div class="icon">
+
+            <i class="bi bi-bell"></i>
+
+        </div>
+
+        <!-- User Profile -->
+        <div class="profile">
+
+            <img src="{{ url_for('static', filename='images/default-user.png') }}"
+                 alt="User">
+
+            <div>
+
+                <h5>{{ user.fullname }}</h5>
+
+                <span>{{ user.email }}</span>
+
+            </div>
+
+        </div>
+
+    </div>
 
 </nav>

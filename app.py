@@ -50,17 +50,34 @@ def register():
         fullname = request.form["fullname"]
         email = request.form["email"]
         password = request.form["password"]
+        confirm_password = request.form["confirm_password"]
+
+        # Check Password Match
+        if password != confirm_password:
+            return "<h3>❌ Passwords do not match.</h3>"
+
+        # Check Existing Email
+        existing = User.query.filter_by(email=email).first()
+
+        if existing:
+            return "<h3>❌ Email already exists.</h3>"
 
         # Hash Password
         hashed_password = generate_password_hash(password)
 
-        existing = User.query.filter_by(email=email).first()
-
-        if existing:
-            return "<h3>Email already exists.</h3>"
-
-        # Generate 12-digit Account Number
+        # Generate Account Number
         account_number = str(random.randint(100000000000, 999999999999))
+
+        # Generate Card Number
+        card_number = (
+            str(random.randint(4000, 4999)) + " " +
+            str(random.randint(1000, 9999)) + " " +
+            str(random.randint(1000, 9999)) + " " +
+            str(random.randint(1000, 9999))
+        )
+
+        # Generate UPI
+        upi_id = email.split("@")[0] + "@vaishnavi"
 
         new_user = User(
             fullname=fullname,
@@ -70,7 +87,9 @@ def register():
             address="",
             account_number=account_number,
             ifsc_code="VGBI0001234",
-            balance=50000
+            balance=50000,
+            card_number=card_number,
+            upi_id=upi_id
         )
 
         db.session.add(new_user)
