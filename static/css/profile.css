@@ -1,0 +1,53 @@
+body{
+
+    background:#F4F7FC;
+
+    font-family:'Poppins',sans-serif;
+
+}
+
+.profile-card{
+
+    background:white;
+
+    max-width:750px;
+
+    margin:auto;
+
+    padding:40px;
+
+    border-radius:25px;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.1);
+
+}
+
+.profile-image{
+
+    width:130px;
+
+    height:130px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+    border:5px solid #2563EB;
+
+    margin-bottom:20px;
+
+}
+
+label{
+
+    font-weight:600;
+
+    margin-bottom:8px;
+
+}
+
+.form-control{
+
+    border-radius:12px;
+
+}

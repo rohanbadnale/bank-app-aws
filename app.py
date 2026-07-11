@@ -223,10 +223,23 @@ def recharge():
 
 
 # ---------------- PROFILE ----------------
-@app.route("/profile")
+@app.route("/profile", methods=["GET", "POST"])
 def profile():
 
-    user = User.query.first()
+    if "user_id" not in session:
+        return redirect(url_for("login"))
+
+    user = User.query.get(session["user_id"])
+
+    if request.method == "POST":
+
+        user.fullname = request.form["fullname"]
+        user.phone = request.form["phone"]
+        user.address = request.form["address"]
+
+        db.session.commit()
+
+        return redirect(url_for("profile"))
 
     return render_template(
         "profile.html",

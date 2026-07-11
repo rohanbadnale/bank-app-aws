@@ -14,28 +14,20 @@ body{
 }
 
 .sidebar{
-
     width:270px;
-
     height:100vh;
-
     background:#0F172A;
-
     color:white;
-
     padding:30px;
-
     display:flex;
-
     flex-direction:column;
-
     position:fixed;
-
     left:0;
-
     top:0;
 
+    overflow-y:auto;   /* <-- add this */
 }
+
 .logo{
 
     display:flex;
@@ -893,4 +885,29 @@ body{
 
     color:#64748B;
 
+}
+/* Sidebar Links */
+
+.menu li a,
+.menu-item a{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    color: white;
+    text-decoration: none;
+}
+
+.menu-item{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:15px;
+    border-radius:12px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.menu-item:hover{
+    background:#2563EB;
 }
