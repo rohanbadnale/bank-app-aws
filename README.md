@@ -1,348 +1,294 @@
-# bank-app-aws
-Secure Banking Application Infrastructure on AWS
+# 🏦 Vaishnavi Gramin Bank
 
-If you mean **"Secure Banking Application Infrastructure on AWS"**, you don't need to build a real banking app. Instead, create the **cloud infrastructure** that could securely host one. This is an excellent AWS + DevOps portfolio project.
+A modern Banking Web Application built using **Python, Flask, MySQL, HTML, CSS, Bootstrap, and JavaScript**.
 
-## Project Architecture
-
-```text
-                     Internet
-                         │
-                   Route 53 (Optional)
-                         │
-                    Application Load Balancer
-                         │
-          ┌──────────────┴──────────────┐
-          │                             │
-      EC2 (Web Server)             EC2 (Web Server)
-          │                             │
-          └──────────────┬──────────────┘
-                         │
-                   Private Subnet
-                         │
-                    RDS MySQL Database
-                         │
-                    Amazon S3 (Backups)
-                         │
-             CloudWatch + SNS Monitoring
-                         │
-                IAM + Security Groups
-```
+This project simulates an online banking system where users can create an account, log in securely, manage their profile, transfer money, and view transaction history.
 
 ---
 
-# AWS Services Used
+# 📌 Features
 
-| Service                   | Purpose                        |
-| ------------------------- | ------------------------------ |
-| EC2                       | Web/Application Server         |
-| VPC                       | Private Network                |
-| Public & Private Subnets  | Security                       |
-| Internet Gateway          | Internet Access                |
-| NAT Gateway               | Internet for Private Instances |
-| Application Load Balancer | Load Balancing                 |
-| Auto Scaling              | High Availability              |
-| RDS MySQL                 | Database                       |
-| S3                        | Document & Backup Storage      |
-| IAM                       | User Permissions               |
-| CloudWatch                | Monitoring                     |
-| SNS                       | Alerts                         |
-| AWS Backup                | Database Backup                |
-| KMS                       | Encryption                     |
-| Secrets Manager           | Store DB Password              |
+## 🔐 Authentication
+- User Registration
+- Secure Login
+- Password Hashing
+- Session Management
+- Logout
 
 ---
 
-# Features
+## 👤 User Profile
 
-### User Login
-
-* Login Page
-* Password Authentication
-
----
-
-### Account Dashboard
-
-* Account Balance
-* Transaction History
-* Mini Statement
+- View Profile
+- Edit Profile
+- Update Phone Number
+- Update Address
+- View Account Details
+- View IFSC Code
+- View UPI ID
 
 ---
 
-### Money Transfer (Dummy)
+## 💰 Banking Features
 
-* Transfer Form
-* Success Message
+- Auto Generated Account Number
+- Auto Generated Debit Card Number
+- Auto Generated UPI ID
+- Default Balance
+- Balance Hide/Show
+- Money Transfer
+- Live Balance Update
+- Transaction History
 
-(No real banking API required.)
+---
+
+## 💳 Dashboard
+
+- Professional Banking UI
+- Sidebar Navigation
+- Navbar
+- Balance Card
+- Premium ATM Card
+- Quick Actions
+- User Information
+- Responsive Layout
 
 ---
 
-### Secure Storage
+## 📜 Transaction Management
 
-Store
-
-* KYC Documents
-* Bank Statements
-* Profile Images
-
-inside Amazon S3.
+- Credit Transactions
+- Debit Transactions
+- Transaction Status
+- Receiver Details
+- Transaction Date & Time
 
 ---
+
+## 🗄 Database
+
+- MySQL Database
+- SQLAlchemy ORM
+- User Table
+- Transaction Table
+
+---
+
+# 🛠 Technologies Used
+
+### Backend
+
+- Python
+- Flask
+- SQLAlchemy
+- Werkzeug
+
+### Frontend
+
+- HTML5
+- CSS3
+- Bootstrap 5
+- Bootstrap Icons
+- JavaScript
 
 ### Database
 
-RDS MySQL Tables
+- MySQL
+
+---
+
+# 📂 Project Structure
 
 ```
-Users
+bank-app-aws/
 
-user_id
-name
-email
-password
-balance
-```
+│
 
-```
-Transactions
+├── app.py
 
-id
-sender
-receiver
-amount
-date
+├── config.py
+
+├── requirements.txt
+
+│
+
+├── models/
+
+│ ├── user.py
+
+│ └── transaction.py
+
+│
+
+├── templates/
+
+│ ├── login.html
+
+│ ├── register.html
+
+│ ├── dashboard.html
+
+│ ├── profile.html
+
+│ ├── transfer.html
+
+│ ├── history.html
+
+│ ├── settings.html
+
+│ └── components/
+
+│
+
+├── static/
+
+│ ├── css/
+
+│ ├── js/
+
+│ ├── images/
+
+│ └── uploads/
+
+│
+
+└── README.md
 ```
 
 ---
 
-# Security Features
+# ⚙ Installation
 
-✅ HTTPS
+## Clone Repository
 
-Use
-
-* AWS Certificate Manager
-* Load Balancer
-
----
-
-### IAM
-
-Create
-
-* Admin
-* Developer
-* Auditor
-
-roles.
-
----
-
-### Security Groups
-
-Allow only
-
+```bash
+git clone https://github.com/rohanbadnale/bank-app-aws.git
 ```
-Internet
-↓
 
-ALB : 80,443
+Go to project
 
-↓
+```bash
+cd bank-app-aws
+```
 
-EC2 : 8080
+Create Virtual Environment
 
-↓
+```bash
+python -m venv venv
+```
 
-RDS :3306 only from EC2
+Activate
+
+Windows
+
+```bash
+venv\Scripts\activate
+```
+
+Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+Run Project
+
+```bash
+python app.py
 ```
 
 ---
 
-### Encryption
+# 🗄 Configure Database
 
-Enable
+Create MySQL Database
 
-* S3 Encryption
-* RDS Encryption
-* KMS Keys
-
----
-
-### Secrets Manager
-
-Store
-
-* Database Username
-* Password
-
-instead of hardcoding them.
-
----
-
-# Monitoring
-
-CloudWatch
-
-Monitor
-
-* CPU
-* Memory
-* Disk
-* Network
-
-SNS
-
-Send Email Alert
-
+```sql
+CREATE DATABASE bank_db;
 ```
-CPU > 70%
 
-↓
+Update your **config.py**
 
-Email Notification
+```python
+SQLALCHEMY_DATABASE_URI = "mysql+pymysql://username:password@localhost/bank_db"
+```
+
+Run Project
+
+```bash
+python app.py
 ```
 
 ---
 
-# High Availability
+# 📷 Screens
 
-Create
+- Login Page
+- Register Page
+- Dashboard
+- Profile
+- Money Transfer
+- Transaction History
 
-* 2 Availability Zones
-
-Deploy
-
-```
-AZ1
-
-EC2
-
-↓
-
-AZ2
-
-EC2
-```
-
-Use
-
-* Auto Scaling
-* Load Balancer
+*(Screenshots can be added later.)*
 
 ---
 
-# DevOps Integration
+# 🚀 Upcoming Features
+
+- Profile Photo Upload
+- Change Password
+- Premium Debit Card Page
+- ATM Card Flip Animation
+- PDF Statement Download
+- Email Notifications
+- Charts & Analytics
+- Dark Mode
+- Mobile Responsive UI
+- AWS EC2 Deployment
+- AWS RDS Integration
+- Nginx + Gunicorn Deployment
+- SSL (HTTPS)
+
+---
+
+# 🎯 Learning Outcomes
+
+This project helped in understanding:
+
+- Flask Framework
+- MVC Architecture
+- SQLAlchemy ORM
+- MySQL Integration
+- Authentication
+- Password Hashing
+- Session Handling
+- CRUD Operations
+- Banking System Design
+- Responsive Dashboard Design
+
+---
+
+# 👨‍💻 Developer
+
+**Rohan Badnale**
+
+Bachelor of Computer Applications (BCA)
+
+Cloud & DevOps Enthusiast
 
 GitHub
 
-↓
-
-Jenkins
-
-↓
-
-Build
-
-↓
-
-Docker Image
-
-↓
-
-Push to Docker Hub / Amazon ECR
-
-↓
-
-Deploy to EC2
+https://github.com/rohanbadnale
 
 ---
 
-# Folder Structure
+# ⭐ Repository
 
-```
-bank-app/
-
-├── frontend/
-
-├── backend/
-
-├── terraform/
-
-├── docker/
-
-├── jenkins/
-
-├── nginx/
-
-├── sql/
-
-├── README.md
-```
+If you like this project, don't forget to ⭐ Star the repository.
 
 ---
 
-# Technologies
+# 📄 License
 
-* HTML
-* CSS
-* JavaScript
-* Node.js / Spring Boot / Python Flask (choose one)
-* MySQL
-* Docker
-* Jenkins
-* GitHub
-* Terraform
-* AWS
-
----
-
-# Skills You'll Demonstrate
-
-* AWS VPC Design
-* EC2 Deployment
-* IAM
-* RDS
-* S3
-* Load Balancer
-* Auto Scaling
-* CloudWatch
-* SNS
-* Docker
-* Jenkins
-* Terraform
-* Git
-* Linux Administration
-* Networking
-* Cloud Security
-
----
-
-## Project Flow
-
-```text
-User
-   │
-   ▼
-Application Load Balancer
-   │
-   ▼
-EC2 Web Server (Docker Container)
-   │
-   ▼
-Backend API
-   │
-   ▼
-Amazon RDS MySQL
-   │
-   ▼
-Amazon S3 (Documents)
-```
-
-## Why this project is valuable
-
-This project closely mirrors how many organizations design secure web application infrastructure. It demonstrates networking, security, automation, monitoring, and deployment skills that are relevant for **Cloud Engineer**, **DevOps Engineer**, and **System Administrator** roles.
-
-If you're building this as a final-year project, I can guide you step by step—from creating the AWS VPC to deploying the application, configuring Docker and Jenkins, and automating the infrastructure with Terraform.
+This project is developed for educational and portfolio purposes.
